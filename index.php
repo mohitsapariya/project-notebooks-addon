@@ -9,7 +9,7 @@
  * License:     GPL2
  */
 
-sdfhbshdgv
+
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -283,8 +283,9 @@ function custom_project_all_listing_shortcode($atts) {
 function override_project_all_listing_shortcode() {
     if (shortcode_exists('project-all-listing')) {
         remove_shortcode('project-all-listing'); 
+		add_shortcode('project-all-listing', 'custom_project_all_listing_shortcode');
     }
-    add_shortcode('project-all-listing', 'custom_project_all_listing_shortcode'); 
+     
 	
 }
 add_action('init', 'override_project_all_listing_shortcode');
@@ -370,7 +371,7 @@ if (class_exists('ptoffice\classes\WPNB_Posthooks')) {
 					return $template;
 				}
         }
-    }
+    
 
     $extended_instance = new WPNB_Posthooks_Extended();
 
@@ -381,6 +382,7 @@ if (class_exists('ptoffice\classes\WPNB_Posthooks')) {
 
    
     add_filter('template_include', array($extended_instance, 'wpnb_custom_template_include_new'), 99);
+	}
 }
 
 add_action('init', 'override_project_custom_template');
@@ -472,7 +474,7 @@ function refine_and_reword_content() {
 }
 
 function call_openai_to_refine_content($content) {
-    $api_key = 'YOUR_API_KEY';  
+    $api_key = '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';  
     $url = 'https://api.openai.com/v1/chat/completions';  
 
    
